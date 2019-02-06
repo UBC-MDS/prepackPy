@@ -1,10 +1,15 @@
 # prepackPy
 
-## Topic:
+## Team
+1. Jingyun Chen: [jchen9314](https://github.com/jchen9314)
+2. Anthony Chiodo: [apchiodo](https://github.com/apchiodo)
+3. Sarah Watts: [smwatts](https://github.com/smwatts)
+
+## Topic
 
 Package that contains methods for standard data staging, preprocessing, and exploratory tasks.
 
-## Function Descriptions:
+## Function Descriptions
 
 #### `splitter(X, target_index, split_size, seed)`
 
@@ -55,3 +60,5 @@ X_train, X_test, y_train, y_test = splitter(data, target_index='y', split_size=0
 | Input Parameters | Input Type             | Output Parameters                                | Output Type |
 |------------------|------------------------|--------------------------------------------------|-------------|
 | X                | dataframe, numpy array | dictionary(key = column index, value = NA count) | dictionary  |
+
+## Relationship to the Python ecosystem
