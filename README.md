@@ -6,6 +6,8 @@ Package that contains methods for standard data staging, preprocessing, and expl
 
 ## Function Descriptions:
 
+---
+
 #### `splitter(X, target_index, split_size, seed)`
 
 **Description:** consolidate scikit-learns current work flow for splitting a data set in to train and test sets, i.e. turn this:
@@ -36,6 +38,8 @@ X_train, X_test, y_train, y_test = splitter(data, target_index='y', split_size=0
 | split size       | float                  | X train           | numpy array    |
 | seed             | integer                | X test            | numpy array    |
 
+---
+
 #### `stdizer(X)`
 
 **Description:** standardize features by removing the mean (centering on 0), and scaling by the standard deviation.  Accepts both pandas dataframes and numpy arrays as input.  Returns numpy array as output.
@@ -43,6 +47,8 @@ X_train, X_test, y_train, y_test = splitter(data, target_index='y', split_size=0
 | Input Parameters | Input Type             | Output Parameters | Output Type |
 |------------------|------------------------|-------------------|-------------|
 | X                | dataframe, numpy array | standardized X    | numpy array |
+
+---
 
 #### `na_counter(X)`
 
