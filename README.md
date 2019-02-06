@@ -5,11 +5,11 @@
 2. Anthony Chiodo: [apchiodo](https://github.com/apchiodo)
 3. Sarah Watts: [smwatts](https://github.com/smwatts)
 
-## Topic:
+## Topic
 
 Package that contains methods for standard data staging, preprocessing, and exploratory tasks.
 
-## Function Descriptions:
+## Function Descriptions
 
 #### `splitter(X, target_index, split_size, seed)`
 
