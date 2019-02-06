@@ -62,19 +62,35 @@ These standardization techniques are based on [Minitab documentation](https://su
 | Input Parameters | Input Type             | Output Parameters | Output Type |
 |------------------|------------------------|-------------------|-------------|
 | X                | dataframe, numpy array | standardized X    | numpy array |
-| col_index        | list of indices        |         ""        |             |
-| method           | string                 |         ""        |             |
-| method_args      | list of lists          |         ""        |             |
+| col_index        | list of indices        |         ""        |      ""     |
+| method           | string                 |         ""        |      ""     |
+| method_args      | list of lists          |         ""        |      ""     |
 ---
 
 #### `na_counter(X)`
 
 **Description:** summarise the missing data (`NA` values) in a dataset.  Accepts both pandas dataframes and numpy arrays as input.  Returns dictionary where the key is the column index, and the value is the NA count as output.
 
-
 | Input Parameters | Input Type             | Output Parameters                               | Output Type |
 |------------------|------------------------|-------------------------------------------------|-------------|
 | X                | dataframe, numpy array | dictionary(key= column index, value = NA count) | dictionary  |
 
-
 ## Relationship to the Python ecosystem
+
+#### `splitter`
+
+The existing package/method is [`sklearn.model_selection.train_test_split`](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html), which only splits features/target into train features/target and test features/target.
+
+What `splitter` will improve is that it will be able to separate the target variable from the dataset by specifying the column index of the target variable.
+
+#### `stdizer`
+
+The existing package/method is [`sklearn.preprocessing.StandardScaler`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html), which considers three standardization methods including subtracting mean and dividing by standard deviation, subtracting mean only, and dividing by standard deviation only.
+
+`stdizer` will consider two more standardization techniques including subtracting the maximum value of each column and dividing by the minimum value of each column, and substracting the user specified mean and dividing by the user specified standard deviation.
+
+#### `na_counter`
+
+The existing package/method is [`pandas.DataFrame.describe`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.describe.html) or [`pandas.DataFrame.info`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.info.html), which contains a summary of the dataset including information of missing values. However, there is no method for finding and reporting where missing values exist in Python.
+
+`na_counter` will take this problem into consideration. It will be able to return both the indices of columns that contains missing values, number of missing values, as well as the percentage of missing values in the columns.
