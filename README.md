@@ -57,8 +57,12 @@ X_train, X_test, y_train, y_test = splitter(data, target_index='y', split_size=0
 
 **Description:** summarise the missing data (`NA` values) in a dataset.  Accepts both pandas dataframes and numpy arrays as input.  Returns dictionary where the key is the column index, and the value is the NA count as output.
 
-| Input Parameters | Input Type             | Output Parameters                                | Output Type |
-|------------------|------------------------|--------------------------------------------------|-------------|
-| X                | dataframe, numpy array | dictionary(key = column index, value = NA count) | dictionary  |
+
+| Input Parameters | Input Type             | Output Parameters                               | Output Type |
+|------------------|------------------------|-------------------------------------------------|-------------|
+| X                | dataframe, numpy array | dictionary(key= column index, value = NA count) | dictionary  |
+| col_index        | list of indices        |                         ""                      |             |
+| method           | string                 |                         ""                      |             |
+| method_args      | list of lists          |                         ""                      |             |
 
 ## Relationship to the Python ecosystem
