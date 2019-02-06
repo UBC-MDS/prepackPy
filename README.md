@@ -6,8 +6,6 @@ Package that contains methods for standard data staging, preprocessing, and expl
 
 ## Function Descriptions:
 
----
-
 #### `splitter(X, target_index, split_size, seed)`
 
 **Description:** consolidate scikit-learns current work flow for splitting a data set in to train and test sets, i.e. turn this:
