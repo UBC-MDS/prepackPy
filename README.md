@@ -7,7 +7,8 @@
 
 ## Topic
 
-Package that contains methods for standard data staging, preprocessing, and exploratory tasks.
+A common rule of thumb for data scientist is that the data preparation process will take approximately 80% of the total time on a project. Not only is this process time consuming, but it is also considered one of the less enjoyable components of a project ([Forbes, 2016](https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/#3d12fbbf6f63)). To help address this problem, we have decided to build a package that will help improve some of the common techniques used in data preparation. This includes a function that will streamline the process of splitting a dataset into testing and training data (and provide a model ready output!), a function that incorporates more standardization methods then a data scientist could ever want _and_ a function that will allow data scientist to quickly understand the columns and quantity with `NA` values in a dataset.
+
 
 ## Function Descriptions
 
@@ -43,14 +44,27 @@ X_train, X_test, y_train, y_test = splitter(data, target_index='y', split_size=0
 
 ---
 
-#### `stdizer(X)`
+#### `stdizer(X, col_index=None, method, method_args)`
 
-**Description:** standardize features by removing the mean (centering on 0), and scaling by the standard deviation.  Accepts both pandas dataframes and numpy arrays as input.  Returns numpy array as output.
+
+
+**Description:** standardize features. Accepts both pandas dataframes and numpy arrays as input.  Returns numpy array as output.
+
+Standardization methods:
+1. Subtract mean and divide by standard deviation
+2. Subtract mean
+3. Divide by standard deviation
+4. Subtract user specified value and divide by user specified vale
+5. Linearly transform the data such that it is scaled to a specific range
+
+These standardization techniques are based on [Minitab documentation](https://support.minitab.com/en-us/minitab/18/help-and-how-to/calculations-data-generation-and-matrices/standardize/standardize-columns-of-data/).
 
 | Input Parameters | Input Type             | Output Parameters | Output Type |
 |------------------|------------------------|-------------------|-------------|
 | X                | dataframe, numpy array | standardized X    | numpy array |
-
+| col_index        | list of indices        |         ""        |             |
+| method           | string                 |         ""        |             |
+| method_args      | list of lists          |         ""        |             |
 ---
 
 #### `na_counter(X)`
@@ -61,8 +75,6 @@ X_train, X_test, y_train, y_test = splitter(data, target_index='y', split_size=0
 | Input Parameters | Input Type             | Output Parameters                               | Output Type |
 |------------------|------------------------|-------------------------------------------------|-------------|
 | X                | dataframe, numpy array | dictionary(key= column index, value = NA count) | dictionary  |
-| col_index        | list of indices        |                         ""                      |             |
-| method           | string                 |                         ""                      |             |
-| method_args      | list of lists          |                         ""                      |             |
+
 
 ## Relationship to the Python ecosystem
