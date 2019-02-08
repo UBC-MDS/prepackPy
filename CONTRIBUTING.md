@@ -19,9 +19,9 @@ Some things that will increase the chance that your pull request is accepted:
 [commit]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 
 Two of three administrators must approve the pull request before it can be merged:
-1. Jingyun Chen: [jchen9314](https://github.com/jchen9314)
-2. Anthony Chiodo: [apchiodo](https://github.com/apchiodo)
-3. Sarah Watts: [smwatts](https://github.com/smwatts)
+1. Jingyun Chen ([jchen9314](https://github.com/jchen9314))
+2. Anthony Chiodo ([apchiodo](https://github.com/apchiodo))
+3. Sarah Watts ([smwatts](https://github.com/smwatts))
 
 # Attributions
 
