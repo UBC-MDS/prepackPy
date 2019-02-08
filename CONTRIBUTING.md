@@ -25,4 +25,4 @@ Two of three administrators must approve the pull request before it can be merge
 
 # Attributions
 
-This Contributions file has been replicated from  a modified version (https://github.com/thoughtbot/factory_bot_rails/blob/master/CONTRIBUTING.md) of the factory_bot_rails git repo.
+This Contributing file has been replicated from  a modified version (https://github.com/thoughtbot/factory_bot_rails/blob/master/CONTRIBUTING.md) from the factory_bot_rails git repo.
