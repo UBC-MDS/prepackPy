@@ -54,8 +54,8 @@ def test_split_size_bound():
 # test split proportions for each output
 def test_split_proportions_size():
     X_train, y_train, X_test, y_test = pre.splitter(TOY_X, target_index=1, split_size=0.25, seed=1)
-    assert(X_train.shape[0] == 3), "size doesn't match"
-    assert(y_train.shape[0] == 3), "size doesn't match"
-    assert(X_test.shape[0] == 1), "size doesn't match"
-    assert(y_test.shape[0] == 1), "size doesn't match"
+	assert(X_train.shape[0] == 3), "size of X train doesn't match"
+    assert(y_train.shape[0] == 3), "size of y train doesn't match"
+    assert(X_test.shape[0] == 1), "size of X test doesn't match"
+    assert(y_test.shape[0] == 1), "size of y test doesn't match"
 
