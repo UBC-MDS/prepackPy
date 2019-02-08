@@ -12,27 +12,26 @@ split a dataset into train and test sets
 Parameters
 ----------
 X: numpy array, pandas dataframe
-    the input dataset
+    an input dataset
 target_index: integer
-    the column index of target variable in X
+    a column index of target variable in X
 split_size: float
-    the proportion of the dataset to include in the test split
+    a proportion of the dataset to include in the test split
 seed: integer
-    the random state that will make code reproducible
+    a random state that will make code reproducible
 
 Returns
 -------
 X_train: numpy array
-    the splitted features for model training
+    a splitted features for model training
 X_test: numpy array 
-    the splitted features for model testing
+    a splitted features for model testing
 y_train: 1d numpy array
-    the splitted target for model training
+    a splitted target for model training
 y_test: 1d numpy array
-    the splitted target for model testing
+    a splitted target for model testing
 """
     return X_train, y_train, X_test, y_test
-
 
 def stdizer(X, col_index=None, method, method_args):
 """
@@ -41,21 +40,33 @@ standardize features
 Parameters
 ----------
 X: numpy array, pandas dataframe
-    the input dataset
+    an input dataset
 col_index: list
-    the list of column indices; Default is None
+    a list of column indices; Default is None
 method: string
-    the method of standardization
+    a method of standardization 
+    one column of a standardized X can be calucated using the equation below:
+
+    X_std[,i] = (X[,i] - first_value)/second_value
+
+    allowable methods include:
+    1. "mean_sd": subtracting the mean value of each column (first_value) and dividing by standard deviation value of each column (second_value) 
+    2. "mean": subtracting the mean value of each column (first value) and dividing by 1 (second_value)
+    3. "sd": subtracting 0 (first_value) and dividing by standard deviation of each column (second_value)
+    4. "min_max": subtracting min value of each column (first_value) and dividing by max value of each column (second_value)
+    5. "own": subtracting an user specified mean value of each column (first_value) and 
+    dividing by another user specified standard deviation value of each column (second_value)
 method_args: list
     user specified arguments
+    used for the last method, users need to identify their first and second value for each column as a format of list, 
+    such as [first_value, second_value]
 
 Returns
 -------
 X_std: numpy array
-    the standardized dataset
+    a standardized dataset
 """
     return X_std
-
 
 def na_counter(X):
 """
@@ -64,11 +75,13 @@ summarise the missing data in a dataset
 Parameters
 ----------
 X: numpy array, pandas dataframe
-    the input dataset
+    an input dataset
 
 Returns
 -------
 na_dict: dictionary
-    the summary dictionary (key = column index, value = NA count)
+    a summary dictionary (key: value)
+    key = an column index of X that has missing values
+    value = an tuple (NA counts, percentage of missing values in each column) 
 """    
     return na_dict
