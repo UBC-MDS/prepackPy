@@ -49,15 +49,6 @@ X_train, X_test, y_train, y_test = splitter(data, target_index='y', split_size=0
 
 **Description:** standardize features. Accepts both pandas dataframes and numpy arrays as input.  Returns numpy array as output.
 
-Standardization methods:
-1. Subtract mean and divide by standard deviation
-2. Subtract mean
-3. Divide by standard deviation
-4. Subtract user specified value and divide by user specified vale
-5. Linearly transform the data such that it is scaled to a specific range
-
-These standardization techniques are based on [Minitab documentation](https://support.minitab.com/en-us/minitab/18/help-and-how-to/calculations-data-generation-and-matrices/standardize/standardize-columns-of-data/).
-
 | Input Parameters | Input Type             | Output Parameters | Output Type |
 |------------------|------------------------|-------------------|-------------|
 | X                | dataframe, numpy array | standardized X    | numpy array |
