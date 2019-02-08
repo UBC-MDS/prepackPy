@@ -3,6 +3,8 @@
 import numpy as np
 import pandas as pd
 import pytest
-from prepackPy.prepackPy import splitter
+import sys
+sys.path.append("../prepackPy")
+import prepackPy as pre
 
 # Input errors
