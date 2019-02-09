@@ -18,7 +18,7 @@ def correct_stdization():
     mean_sd_outcome = np.array([[-1. -1.], [-1. -1.], [ 1.  1.], [ 1.  1.]])
     mean_outcome = np.array([[-0.5 -0.5], [-0.5 -0.5], [ 0.5  0.5], [ 0.5  0.5]])
     sd_outcome = np.array([[0. 0.], [0. 0.], [2. 2.], [2. 2.]])
-    min_max_outcome = np.array([[-2. -0.75], [-2. 0.75], [-1.5 -0.5], [-1.5 -0.5.]])
+    min_max_outcome = np.array([[-2. -0.75], [-2. -0.75], [-1.5 -0.5], [-1.5 -0.5.]])
     own_outcome = np.array([[0. 0.], [0. 0.], [1. 1.], [1. 1.]])
 
     assert np.testing.assert_array_equal(pre.stdizer(np_data, method="mean_sd"), mean_sd_outcome), "Mean std, numpy"
