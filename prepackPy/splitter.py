@@ -34,7 +34,7 @@ def splitter(X, target_index, split_size, seed):
     -------
     >>> import numpy as np
     >>> import pandas as pd
-    >>> from splitter import splitter # to do
+    >>> from splitter import splitter
     >>> X = np.random.randint(10, size=(3, 3))
     >>> X
     array([[9, 9, 0],
