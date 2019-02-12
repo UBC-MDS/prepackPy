@@ -7,7 +7,7 @@ import sys
 sys.path.append("../prepackPy")
 import stdizer as std
 
-def correct_stdization():
+def test_correct_stdization():
     """
     Testing that the standardization methods are working correctly
     """
@@ -33,7 +33,7 @@ def correct_stdization():
     assert np.array_equal(std.stdizer(df_data, method="min_max"), min_max_outcome), "Output from (stdizer(df_data, method=`min_max`..) is incorrect"
     assert np.array_equal(std.stdizer(df_data, method="own", method_args=[[4,2],[3,4]]), own_outcome), "Output from (stdizer(df_data, method=`own`..) is incorrect"
 
-def correct_argument_types():
+def test_correct_argument_types():
     """
     Testing that the input values are valid types
     """    
@@ -44,7 +44,7 @@ def correct_argument_types():
         std.stdizer(np_data, method=3)
         std.stdizer(np_data, method="mean_sd", method_args=4)
 
-def correct_argument_values():
+def test_correct_argument_values():
     """
     Testing that the input values are valid
     """ 
