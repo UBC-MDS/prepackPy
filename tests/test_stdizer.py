@@ -5,7 +5,7 @@ import pandas as pd
 import pytest
 import sys
 sys.path.append("../prepackPy")
-import prepackPy as pre
+import stdizer as pre
 
 def correct_stdization():
     """

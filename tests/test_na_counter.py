@@ -5,7 +5,7 @@ import pandas as pd
 import pytest
 import sys
 sys.path.append("../prepackPy")
-import prepackPy as pre
+import na_counter as pre
 
 toy = np.array([[-1. -1.], [-1. -1.], [ 1.  1.], [ 1.  1.]])
 toy_na = np.array([[-1, np.nan], [np.nan, np.nan], [1, np.nan], [1, 1]])

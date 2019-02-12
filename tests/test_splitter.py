@@ -5,7 +5,7 @@ import pandas as pd
 import pytest
 import sys
 sys.path.append("../prepackPy")
-import prepackPy as pre
+import splitter as pre
 
 TOY_X = np.array([[1,2,3],[3,4,3],[5,6,3],[4,3,2]])
 
