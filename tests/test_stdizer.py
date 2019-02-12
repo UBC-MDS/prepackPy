@@ -5,7 +5,7 @@ import pandas as pd
 import pytest
 import sys
 sys.path.append("../prepackPy")
-import stdizer as pre
+import stdizer as std
 
 def correct_stdization():
     """
@@ -18,20 +18,20 @@ def correct_stdization():
     mean_sd_outcome = np.asarray([[-1.0, -1.0], [-1.0, -1.0], [1.0,  1.0], [1.0,  1.0]])
     mean_outcome = np.asarray([[-0.5, -0.5], [-0.5, -0.5], [0.5,  0.5], [0.5,  0.5]])
     sd_outcome = np.asarray([[0.0, 0.0], [0.0, 0.0], [2.0, 2.0], [2.0, 2.0]])
-    min_max_outcome = np.asarray([[-2.0, -0.75], [-2.0, -0.75], [-1.5, -0.5], [-1.5, -0.5]])
-    own_outcome = np.asarray([[0.0, 0.0], [0.0, 0.0], [1.0, 1.0], [1.0, 1.0]])
+    min_max_outcome = np.asarray([[0.0, 0.0], [0.0, 0.0], [1.0, 1.0], [1.0, 1.0]])
+    own_outcome = np.asarray([[-2.0, -0.75], [-2.0, -0.75], [-1.5, -0.5], [-1.5, -0.5]])
 
-    assert np.testing.assert_array_equal(pre.stdizer(np_data, method="mean_sd"), mean_sd_outcome), "Mean std, numpy"
-    assert np.testing.assert_array_equal(pre.stdizer(np_data, method="mean"), mean_outcome), "Mean, numpy"
-    assert np.testing.assert_array_equal(pre.stdizer(np_data, method="sd"), sd_outcome), "Std, numpy"
-    assert np.testing.assert_array_equal(pre.stdizer(np_data, method="min_max"), min_max_outcome), "Min_max, numpy"
-    assert np.testing.assert_array_equal(pre.stdizer(np_data, method="own", method_args=[[4,2],[3,4]]), own_outcome), "Own, numpy"
+    assert np.array_equal(std.stdizer(np_data, method="mean_sd"), mean_sd_outcome), "Output from (stdizer(np_data, method=`mean_sd`..) is incorrect"
+    assert np.array_equal(std.stdizer(np_data, method="mean"), mean_outcome), "Output from (stdizer(np_data, method=`mean`..) is incorrect"
+    assert np.array_equal(std.stdizer(np_data, method="sd"), sd_outcome), "Output from (stdizer(np_data, method=`sd`..) is incorrect"
+    assert np.array_equal(std.stdizer(np_data, method="min_max"), min_max_outcome), "Output from (stdizer(np_data, method=`min_max`..) is incorrect"
+    assert np.array_equal(std.stdizer(np_data, method="own", method_args=[[4,2],[3,4]]), own_outcome), "Output from (stdizer(np_data, method=`own`..) is incorrect"
 
-    assert np.testing.assert_array_equal(pre.stdizer(df_data, method="mean_sd"), mean_sd_outcome), "Mean std, DataFrame"
-    assert np.testing.assert_array_equal(pre.stdizer(df_data, method="mean"), mean_outcome), "Mean, DataFrame"
-    assert np.testing.assert_array_equal(pre.stdizer(df_data, method="sd"), sd_outcome), "Std, DataFrame"
-    assert np.testing.assert_array_equal(pre.stdizer(np_data, method="min_max"), min_max_outcome), "Min_max, DataFrame"
-    assert np.testing.assert_array_equal(pre.stdizer(np_data, method="own", method_args=[[4,2],[3,4]]), own_outcome), "Own, DataFrame"
+    assert np.array_equal(std.stdizer(df_data, method="mean_sd"), mean_sd_outcome), "Output from (stdizer(df_data, method=`mean_sd`..) is incorrect"
+    assert np.array_equal(std.stdizer(df_data, method="mean"), mean_outcome), "Output from (stdizer(df_data, method=`mean`..) is incorrect"
+    assert np.array_equal(std.stdizer(df_data, method="sd"), sd_outcome), "Output from (stdizer(df_data, method=`sd`..) is incorrect"
+    assert np.array_equal(std.stdizer(df_data, method="min_max"), min_max_outcome), "Output from (stdizer(df_data, method=`min_max`..) is incorrect"
+    assert np.array_equal(std.stdizer(df_data, method="own", method_args=[[4,2],[3,4]]), own_outcome), "Output from (stdizer(df_data, method=`own`..) is incorrect"
 
 def correct_argument_types():
     """
@@ -40,9 +40,9 @@ def correct_argument_types():
     data = [[0, 0], [0, 0], [1, 1], [1, 1]]
     np_data = np.asarray(data)
     with pytest.raises(TypeError):
-        pre.stdizer(1, method="mean_sd")
-        pre.stdizer(np_data, method=3)
-        pre.stdizer(np_data, method="mean_sd", method_args=4)
+        std.stdizer(1, method="mean_sd")
+        std.stdizer(np_data, method=3)
+        std.stdizer(np_data, method="mean_sd", method_args=4)
 
 def correct_argument_values():
     """
@@ -53,6 +53,8 @@ def correct_argument_values():
     data_2 = [[[0, 0]]]
     np_data_2 = np.asarray(data_2)
     with pytest.raises(ValueError):
-        pre.stdizer(np_data, method="not a valid method")
-        pre.stdizer(np_data, method="own", method_args=[[1],[1,2]])
-        pre.stdizer(np_data, method="own", method_args=[[1,1],[1,0]])
+        std.stdizer(np_data, method="not a valid method")
+        std.stdizer(np_data, method="own", method_args=[[1],[1,2]])
+        std.stdizer(np_data, method="own", method_args=[[1,1],[1,0]])
+    with pytest.raises(ValueError):
+        std.stdizer(np_data, method="not a valid method")
