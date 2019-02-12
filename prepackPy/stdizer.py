@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import numpy as np
-import warnings
 import pandas as pd
 
 def stdizer(X, method="mean_sd", method_args=None):
