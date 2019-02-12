@@ -37,4 +37,42 @@ def stdizer(X, method, method_args, col_index=None):
     X_std: numpy array
         a standardized dataset
     """
-    return X_std
+        # Testing the types passed in (WIP)
+    
+    # Transform the data
+    X_stdized = np.asarray(X)
+    X_stdized = X_stdized.astype(float)
+    
+    # Make sure only the allowed methods are passed in
+    assert method in ["mean_sd","mean", "sd", "min_max", "own"], "Invalid input for the method argument"
+    
+    # Make sure the arguments in method_args are valid
+    if method == "own":
+        if len({len(i) for i in method_args}) == 2:
+            raise ValueError('All lists in method_args must numeric and of length 2 (a. mean, b. standard deviation)')
+        assert len(method_args) <= X_stdized.shape[1], "Too many method arguments have been entered"
+    
+    if (method == "mean_sd"):
+        for i in range(0,X_stdized.shape[1]):
+            mean = np.mean(X_stdized[:,i])
+            std = np.std(X_stdized[:,i])
+            X_stdized[:,i] = (X_stdized[:,i] - mean)/std
+    elif (method == "mean"):
+        for i in range(0,X_stdized.shape[1]):
+            mean = np.mean(X_stdized[:,i])
+            X_stdized[:,i] = (X_stdized[:,i] - mean)
+    elif (method == "sd"):
+        for i in range(0,X_stdized.shape[1]):
+            std = np.std(X_stdized[:,i])
+            X_stdized[:,i] = (X_stdized[:,i])/std
+    elif (method == "min_max"):
+        for i in range(0,X_stdized.shape[1]):
+            min_val = np.min(X_stdized[:,i])
+            max_val = np.max(X_stdized[:,i])
+            X_stdized[:,i] = (X_stdized[:,i] - min_val)/max_val
+    elif (method == "own"):
+        for i in range(0,X_stdized.shape[1]):
+            mean = method_args[i][0]
+            std = method_args[i][1]
+            X_stdized[:,i] = (X_stdized[:,i] - mean)/std
+    return X_stdized

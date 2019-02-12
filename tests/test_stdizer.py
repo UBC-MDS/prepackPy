@@ -15,11 +15,11 @@ def correct_stdization():
     np_data = np.asarray(data)
     df_data = pd.DataFrame(data)
 
-    mean_sd_outcome = np.array([[-1. -1.], [-1. -1.], [ 1.  1.], [ 1.  1.]])
-    mean_outcome = np.array([[-0.5 -0.5], [-0.5 -0.5], [ 0.5  0.5], [ 0.5  0.5]])
-    sd_outcome = np.array([[0. 0.], [0. 0.], [2. 2.], [2. 2.]])
-    min_max_outcome = np.array([[-2. -0.75], [-2. -0.75], [-1.5 -0.5], [-1.5 -0.5.]])
-    own_outcome = np.array([[0. 0.], [0. 0.], [1. 1.], [1. 1.]])
+    mean_sd_outcome = np.asarray([[-1.0, -1.0], [-1.0, -1.0], [1.0,  1.0], [1.0,  1.0]])
+    mean_outcome = np.asarray([[-0.5, -0.5], [-0.5, -0.5], [0.5,  0.5], [0.5,  0.5]])
+    sd_outcome = np.asarray([[0.0, 0.0], [0.0, 0.0], [2.0, 2.0], [2.0, 2.0]])
+    min_max_outcome = np.asarray([[-2.0, -0.75], [-2.0, -0.75], [-1.5, -0.5], [-1.5, -0.5]])
+    own_outcome = np.asarray([[0.0, 0.0], [0.0, 0.0], [1.0, 1.0], [1.0, 1.0]])
 
     assert np.testing.assert_array_equal(pre.stdizer(np_data, method="mean_sd"), mean_sd_outcome), "Mean std, numpy"
     assert np.testing.assert_array_equal(pre.stdizer(np_data, method="mean"), mean_outcome), "Mean, numpy"
