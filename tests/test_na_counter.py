@@ -7,10 +7,10 @@ import sys
 sys.path.append("../prepackPy")
 import na_counter as pre
 
-toy = np.array([[-1. -1.], [-1. -1.], [ 1.  1.], [ 1.  1.]])
-toy_na = np.array([[-1, np.nan], [np.nan, np.nan], [1, np.nan], [1, 1]])
-toy_output = {0:0,1:0}
-toy_na_output = {0:1,1:3}
+toy = np.asarray([[-1., -1.], [-1., -1.], [ 1., 1.], [ 1., 1.]])
+toy_na = np.asarray([[-1, np.nan], [np.nan, np.nan], [1, np.nan], [1, 1]])
+toy_output = {'column':[0,1],'nans':[0,0]}
+toy_na_output = {'column':[0,1],'nans':[1,3]}
 
 # test na_counter(X, col_index)
 
@@ -42,13 +42,13 @@ def test_one_obs():
 
 # test expected outputs
 def test_outputs():
-    result_toy = na_counter(toy, col_index=[1,2])
+    result_toy = pre.na_counter(toy, col_index=[0,1])
     assert(result_toy == toy_output), "Test array with no missing values, output incorrect."
 
-    result_toy_na = na_counter(toy_na, col_index=[1,2])
+    result_toy_na = pre.na_counter(toy_na, col_index=[0,1])
     assert(result_toy_na == toy_na_output), "Test array with missing values, output incorrect"
 
-# test empty list of columns
+# test default col_index
 def test_empty_columns():
-    result_toy = na_counter(toy, col_index=[])
+    result_toy = pre.na_counter(toy, col_index=None)
     assert(result_toy == toy_output)
