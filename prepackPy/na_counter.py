@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import numpy as np
-import warnings
 import pandas as pd
 
 def na_counter(X, col_index=None):
