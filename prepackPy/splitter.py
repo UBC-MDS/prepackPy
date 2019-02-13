@@ -22,13 +22,13 @@ def splitter(X, target_index, split_size, seed):
     Returns
     -------
     X_train: numpy ndarray
-        splitted features for model training
+        split features for model training
     y_train: numpy ndarray
-        splitted target for model training
+        split target for model training
     X_test: numpy ndarray 
-        splitted features for model testing
+        split features for model testing
     y_test: numpy ndarray
-        splitted target for model testing
+        split target for model testing
         
     Example
     -------
