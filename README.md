@@ -43,18 +43,20 @@ X_train, X_test, y_train, y_test = splitter(data, target_index='y', split_size=0
 
 ---
 
-#### `stdizer(X, col_index=None, method, method_args)`
-
-
+#### `stdizer(X, method="mean_sd", method_args=None)`
 
 **Description:** standardize features. Accepts both pandas dataframes and numpy arrays as input.  Returns numpy array as output.
 
 | Input Parameters | Input Type             | Output Parameters | Output Type |
 |------------------|------------------------|-------------------|-------------|
 | X                | pandas.dataframe, numpy.ndarray | standardized X    | numpy.ndarray |
-| col_index        | list of indices        |         ""        |      ""     |
 | method           | string                 |         ""        |      ""     |
 | method_args      | list of lists          |         ""        |      ""     |
+
+The input parameter `method` accepts the following values: mean_sd, mean, sd, min_max, own. Each value for the `method` parameter will allow the user to apply a different type of standardization to dataset `X`.
+
+`method` = `own` required additional input parameters called `method_args`. `method_args` contains a list of lists i.e. [[1,2], [3,4]], where the values correspond to the means and standard deviation of each column in `X`, respectively.
+
 ---
 
 #### `na_counter(X)`
