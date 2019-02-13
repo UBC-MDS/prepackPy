@@ -36,10 +36,10 @@ X_train, X_test, y_train, y_test = splitter(data, target_index='y', split_size=0
 
 | Input Parameters | Input Type             | Output Parameters | Output Type    |
 |------------------|------------------------|-------------------|----------------|
-| X                | dataframe, numpy array | y train           | 1D numpy array |
-| target index     | integer                | y test            | 1D numpy array |
-| split size       | float                  | X train           | numpy array    |
-| seed             | integer                | X test            | numpy array    |
+| X                | pandas.dataframe, numpy.ndarray | y train           | numpy.ndarray |
+| target index     | integer                | y test            | numpy.ndarray |
+| split size       | float                  | X train           | numpy.ndarray    |
+| seed             | integer                | X test            | numpy.ndarray    |
 
 ---
 
@@ -49,7 +49,7 @@ X_train, X_test, y_train, y_test = splitter(data, target_index='y', split_size=0
 
 | Input Parameters | Input Type             | Output Parameters | Output Type |
 |------------------|------------------------|-------------------|-------------|
-| X                | dataframe, numpy array | standardized X    | numpy array |
+| X                | pandas.dataframe, numpy.ndarray | standardized X    | numpy.ndarray |
 | method           | string                 |         ""        |      ""     |
 | method_args      | list of lists          |         ""        |      ""     |
 
@@ -65,7 +65,7 @@ The input parameter `method` accepts the following values: mean_sd, mean, sd, mi
 
 | Input Parameters | Input Type             | Output Parameters                               | Output Type |
 |------------------|------------------------|-------------------------------------------------|-------------|
-| X                | dataframe, numpy array | dictionary(key= column index, value = NA count) | dictionary  |
+| X                | pandas.dataframe, numpy.ndarray | dictionary(key= column index, value = NA count) | dictionary  |
 
 ## Relationship to the Python ecosystem
 
