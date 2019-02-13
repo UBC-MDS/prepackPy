@@ -34,7 +34,7 @@ def na_counter(X, col_index=None):
         raise ValueError("X does not contain any observations")
 
     if isinstance(col_index, int):
-        if col_index > X.shape[1] - 1 or col_index < 0:
+        if col_index > X.shape[1] - 1 or col_index < -X.shape[1]:
             raise ValueError("The target_index value is out of bounds")
 
     if isinstance(col_index, list):
