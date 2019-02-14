@@ -25,7 +25,7 @@ from prepackPy import na_counter as na, splitter as sp, stdizer as sd
 
 ## Example Useage
 
-After the package has been installed you will be able to complete the following examples. For full function descriptions please see the `Function Description` section below.
+After the package has been installed you will be able to complete the following examples in the Python IDE. For full function descriptions please see the `Function Description` section below.
 
 #### `sp.splitter(X, target_index, split_size, seed)`
 ```
@@ -38,8 +38,7 @@ X_train, y_train, X_test, y_test = sp.splitter(X, target_index=2, split_size=0.3
 
 Output:
 ```
-X_train = array([[5, 0],
-	             [3, 7]])
+X_train = array([[5, 0], [3, 7]])
 
 y_train = array([3, 9])
 
