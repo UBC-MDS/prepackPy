@@ -9,7 +9,20 @@ import stdizer as std
 
 def test_correct_stdization():
     """
-    Testing that the standardization methods are working correctly
+    Testing each standardization method for the correct output
+    Tests will be run for both a numpy array and pandas dataframe input (X):
+        X = Numpy Array
+        Test 1: mean_sd method
+        Test 2: mean method
+        Test 3: sd method
+        Test 4: min_max method
+        Test 5: own method
+        X = Pandas Dataframe
+        Test 6: mean_sd method
+        Test 7: mean method
+        Test 8: sd method
+        Test 9: min_max method
+        Test 10: own method
     """
     data = [[0, 0], [0, 0], [1, 1], [1, 1]]
     np_data = np.array(data)
@@ -35,7 +48,10 @@ def test_correct_stdization():
 
 def test_correct_argument_types():
     """
-    Testing that the input values are valid types
+    Testing that the input values are of valid types
+        Test 1: invalid input type for X
+        Test 2: invalid input type for method
+        Test 3: invalid input type for method_args
     """    
     data = [[0, 0], [0, 0], [1, 1], [1, 1]]
     np_data = np.array(data)
@@ -47,10 +63,11 @@ def test_correct_argument_types():
 def test_correct_argument_values():
     """
     Testing that the input values are valid
+        Test 1: invalid value for method 
+        Test 2: invalid value for method_args 
     """ 
     data = [[0, 0], [0, 0], [1, 1], [1, 1]]
     np_data = np.array(data)
     with pytest.raises(ValueError):
         std.stdizer(np_data, method="not a valid method")
         std.stdizer(np_data, method="own", method_args=[[1],[1,2]])
-        std.stdizer(np_data, method="own", method_args=[[1,1],[1,0]])
