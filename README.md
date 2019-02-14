@@ -9,9 +9,77 @@
 
 A common rule of thumb for data scientist is that the data preparation process will take approximately 80% of the total time on a project. Not only is this process time consuming, but it is also considered one of the less enjoyable components of a project ([Forbes, 2016](https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/#3d12fbbf6f63)). To help address this problem, we have decided to build a package that will help improve some of the common techniques used in data preparation. This includes a function that will streamline the process of splitting a dataset into testing and training data (and provide a model ready output!), a function that incorporates more standardization methods then a data scientist could ever want _and_ a function that will allow data scientist to quickly understand the columns and quantity with `NA` values in a dataset.
 
+## Install
+
+From the terminal, type:
+
+```
+pip install git+https://github.com/UBC-MDS/prepackPy.git
+```
+
+From the Python IDE, type
+
+```
+from prepackPy import na_counter as na, splitter as sp, stdizer as sd
+```
+
+## Example Useage
+
+After the package has been installed you will be able to complete the following examples in the Python IDE. For full function descriptions please see the `Function Description` section below.
+
+#### `sp.splitter(X, target_index, split_size, seed)`
+```
+# example dataset
+X = np.random.randint(10, size=(3, 3))
+
+# example function call
+X_train, y_train, X_test, y_test = sp.splitter(X, target_index=2, split_size=0.3, seed=0)
+```
+
+Output:
+```
+X_train = array([[5, 0], [3, 7]])
+
+y_train = array([3, 9])
+
+X_test = array([[3, 5]])
+
+y_test = array([2])
+```
+
+#### `sd.stdizer(X, method="mean_sd", method_args=None)`
+```
+# example dataset
+X = np.array([[-1, 0], [2, 1], [1, -2], [1, 1]])
+
+# example function call
+sd.stdizer(X, method="mean_sd", method_args=None)
+```
+
+Output:
+```
+array([[ 1.41421356, -1.35873244, -0.53916387],
+       [-0.70710678,  1.01904933,  1.40182605],
+       [-0.70710678,  0.33968311, -0.86266219]])
+```
+
+#### `na.na_counter(X)`
+```
+# example dataset
+X = np.array([[-1, np.nan], [np.nan, np.nan], [1, np.nan], [1, 1]])
+
+# example function call
+na.na_counter(X, col_index=[0,1])
+```
+
+Output:
+```
+{'column': [0, 1], 'nans': [1, 3]}
+```
+
 ## Function Descriptions
 
-#### `splitter(X, target_index, split_size, seed)`
+#### `sp.splitter(X, target_index, split_size, seed)`
 
 **Description:** consolidate scikit-learns current work flow for splitting a data set in to train and test sets, i.e. turn this:
 
@@ -43,7 +111,7 @@ X_train, X_test, y_train, y_test = splitter(data, target_index='y', split_size=0
 
 ---
 
-#### `stdizer(X, method="mean_sd", method_args=None)`
+#### `sd.stdizer(X, method="mean_sd", method_args=None)`
 
 **Description:** standardize features. Accepts both pandas dataframes and numpy arrays as input.  Returns numpy array as output.
 
@@ -59,7 +127,7 @@ The input parameter `method` accepts the following values: mean_sd, mean, sd, mi
 
 ---
 
-#### `na_counter(X)`
+#### `na.na_counter(X)`
 
 **Description:** summarise the missing data (`NA` values) in a dataset.  Accepts both pandas dataframes and numpy arrays as input.  Returns dictionary where the key is the column index, and the value is the NA count as output.
 
