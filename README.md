@@ -156,4 +156,4 @@ This function also will consider two more standardization techniques including s
 
 The existing package/method is [`pandas.DataFrame.describe`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.describe.html) or [`pandas.DataFrame.info`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.info.html), which contains a summary of the dataset including information of missing values. However, there is no method for finding and reporting where missing values exist in Python.
 
-`na_counter` will take this problem into consideration. It will be able to return both the indices of columns that contains missing values, number of missing values.
+This function will take this problem into consideration. It will be able to return both the indices of columns that contains missing values, number of missing values.
