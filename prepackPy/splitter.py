@@ -41,7 +41,7 @@ def splitter(X, target_index, split_size, seed):
            [4, 7, 3],
            [2, 7, 2]])
     >>> X_train, y_train, X_test, y_test = splitter(
-    ...     X, target_index=2, test_size=0.3, seed=0)
+    ...     X, target_index=2, split_size=0.3, seed=0)
     ...
     >>> X_train
     array([[0, 0],
