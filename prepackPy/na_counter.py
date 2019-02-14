@@ -5,7 +5,7 @@ import pandas as pd
 
 def na_counter(X, col_index=None):
     """
-    summarise the missing data in a dataset
+    Summarise the missing data in a dataset
 
     Parameters
     ----------
@@ -17,8 +17,8 @@ def na_counter(X, col_index=None):
     -------
     na_dict: dictionary
         a summary dictionary (key: value)
-        key = an column index of X that has missing values
-        value = an tuple (NA counts, percentage of missing values in each column)
+        key = a column index of X that has missing values
+        value = a list (NA counts of missing values in each column)
     """
 
     # input type check
