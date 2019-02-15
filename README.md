@@ -27,7 +27,8 @@ from prepackPy import na_counter as na, splitter as sp, stdizer as sd
 
 After the package has been installed you will be able to complete the following examples in the Python IDE. For full function descriptions please see the `Function Description` section below.
 
-#### `sp.splitter(X, target_index, split_size, seed)`
+- `sp.splitter(X, target_index, split_size, seed)`
+
 ```
 # example dataset
 X = np.random.randint(10, size=(3, 3))
@@ -47,7 +48,8 @@ X_test = array([[3, 5]])
 y_test = array([2])
 ```
 
-#### `sd.stdizer(X, method="mean_sd", method_args=None)`
+- `sd.stdizer(X, method="mean_sd", method_args=None)`
+
 ```
 # example dataset
 X = np.array([[-1, 0], [2, 1], [1, -2], [1, 1]])
@@ -63,7 +65,8 @@ array([[ 1.41421356, -1.35873244, -0.53916387],
        [-0.70710678,  0.33968311, -0.86266219]])
 ```
 
-#### `na.na_counter(X)`
+- `na.na_counter(X)`
+
 ```
 # example dataset
 X = np.array([[-1, np.nan], [np.nan, np.nan], [1, np.nan], [1, 1]])
@@ -79,7 +82,7 @@ Output:
 
 ## Function Descriptions
 
-#### `sp.splitter(X, target_index, split_size, seed)`
+- `sp.splitter(X, target_index, split_size, seed)`
 
 **Description:** consolidate scikit-learns current work flow for splitting a data set in to train and test sets, i.e. turn this:
 
@@ -111,7 +114,7 @@ X_train, X_test, y_train, y_test = splitter(data, target_index='y', split_size=0
 
 ---
 
-#### `sd.stdizer(X, method="mean_sd", method_args=None)`
+- `sd.stdizer(X, method="mean_sd", method_args=None)`
 
 **Description:** standardize features. Accepts both pandas dataframes and numpy arrays as input.  Returns numpy array as output.
 
@@ -127,7 +130,7 @@ The input parameter `method` accepts the following values: mean_sd, mean, sd, mi
 
 ---
 
-#### `na.na_counter(X)`
+- `na.na_counter(X)`
 
 **Description:** summarise the missing data (`NA` values) in a dataset.  Accepts both pandas dataframes and numpy arrays as input.  Returns dictionary where the key is the column index, and the value is the NA count as output.
 
@@ -137,20 +140,20 @@ The input parameter `method` accepts the following values: mean_sd, mean, sd, mi
 
 ## Relationship to the Python ecosystem
 
-#### `splitter`
+- `splitter`
 
 The existing package/method is [`sklearn.model_selection.train_test_split`](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html), which only splits features/target into train features/target and test features/target.
 
 What `splitter` will improve is that it will be able to separate the target variable from the dataset by specifying the column index of the target variable.
 
-#### `stdizer`
+- `stdizer`
 
 The existing package/method is [`sklearn.preprocessing.StandardScaler`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html), which considers three standardization methods including subtracting mean and dividing by standard deviation, subtracting mean only, and dividing by standard deviation only.
 
-`stdizer` will consider two more standardization techniques including subtracting the maximum value of each column and dividing by the minimum value of each column, and substracting the user specified mean and dividing by the user specified standard deviation.
+This function also will consider two more standardization techniques including subtracting the maximum value of each column and dividing by the minimum value of each column, and substracting the user specified mean and dividing by the user specified standard deviation.
 
-#### `na_counter`
+- `na_counter`
 
 The existing package/method is [`pandas.DataFrame.describe`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.describe.html) or [`pandas.DataFrame.info`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.info.html), which contains a summary of the dataset including information of missing values. However, there is no method for finding and reporting where missing values exist in Python.
 
-`na_counter` will take this problem into consideration. It will be able to return both the indices of columns that contains missing values, number of missing values, as well as the percentage of missing values in the columns.
+This function will take this problem into consideration. It will be able to return both the indices of columns that contains missing values, number of missing values.
