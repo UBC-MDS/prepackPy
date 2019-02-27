@@ -7,40 +7,70 @@ import sys
 sys.path.append("../prepackPy")
 import splitter as sp
 
+TOY_X_df = pd.DataFrame({"x":[1,2,3],"y":[3,4,3],"z":[5,6,3],"m":[4,3,2]})
 TOY_X = np.array([[1,2,3],[3,4,3],[5,6,3],[4,3,2]])
 
-def test_input_type():
+def test_X_type():
     """
-    test the type of input parameters
+    test the type of X
     """
     with pytest.raises(TypeError):
-        # test the type of X
         sp.splitter("X", target_index=1, split_size=0.2, seed=1)
-        sp.splitter({1}, target_index=1, split_size=0.2, seed=1)
-        # test the type of target_index
-        sp.splitter(TOY_X, target_index="1", split_size=0.2, seed=1)
-        sp.splitter(TOY_X, target_index=3.5, split_size=0.2, seed=1)
-        # test the type of split_size
-        sp.splitter(TOY_X, target_index=1, split_size="0.2", seed=1)
-        sp.splitter(TOY_X, target_index=1, split_size=[0.5], seed=1)
-        # test the type of seed
-        sp.splitter(TOY_X, target_index=1, split_size=0.2, seed="1")
-        sp.splitter(TOY_X, target_index=1, split_size=0.2, seed=0.5)
 
-def test_input_value():
+def test_target_index_type():
     """
-    test the values for input  parameters
+    test the type of target_index
+    """
+    with pytest.raises(TypeError):
+        sp.splitter(TOY_X, target_index="1", split_size=0.2, seed=1)
+
+def test_split_size_type():
+    """
+    test the type of split_size
+    """
+    with pytest.raises(TypeError):
+        sp.splitter(TOY_X, target_index=1, split_size="0.2", seed=1)
+
+def test_seed_type():
+    """
+    test the type of seed
+    """
+    with pytest.raises(TypeError):
+        sp.splitter(TOY_X, target_index=1, split_size=0.2, seed="1")
+
+def test_X_value():
+    """
+    test the values of X
     """
     with pytest.raises(ValueError):
-        # test if X contains at least two observations
         sp.splitter(np.array([1]), target_index=1, split_size=0.2, seed=1)
-        sp.splitter(np.array([]), target_index=1, split_size=0.2, seed=1)
-        # test the boundary of target_index
+
+def test_target_index_value():
+    """
+    test the values of target_index
+    """
+    with pytest.raises(ValueError):
         sp.splitter(TOY_X, target_index=4, split_size=0.2, seed=1)
-        sp.splitter(TOY_X, target_index=-10, split_size=0.2, seed=1)
-        # test thee boundary of split_size, should be (0,1)
+
+def test_split_size_value():
+    """
+    test the values of split_size
+    """
+    with pytest.raises(ValueError):
         sp.splitter(TOY_X, target_index=1, split_size=1.5, seed=1)
-        sp.splitter(TOY_X, target_index=1, split_size=-1.5, seed=1)
+
+def test_seed_value():
+    """
+    test the values of seed
+    """
+    with pytest.raises(ValueError):
+        sp.splitter(TOY_X, target_index=1, split_size=0.5, seed=-1)
+
+def test_function_run():
+    """
+    test if the function can run
+    """
+    sp.splitter(TOY_X_df, target_index=1, split_size=0.5, seed=1)
 
 def test_output_size():
     """
