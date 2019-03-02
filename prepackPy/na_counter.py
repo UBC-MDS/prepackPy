@@ -73,7 +73,7 @@ def na_counter(X, col_index=None):
             na_dict['column'].append(i)
             na_dict['nans'].append(nans)
 
-    elif isinstance(col_index, type(None)):
+    else:
         columns = X_na.shape[1]
         for i in range(0, columns):
             nans = np.isnan(X_na[:,i]).sum()
