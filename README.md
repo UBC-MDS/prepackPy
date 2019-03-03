@@ -30,6 +30,9 @@ After the package has been installed you will be able to complete the following 
 - `sp.splitter(X, target_index, split_size, seed)`
 
 ```
+# import numpy package
+import numpy as np
+
 # example dataset
 X = np.random.randint(10, size=(3, 3))
 
@@ -51,6 +54,9 @@ y_test = array([2])
 - `sd.stdizer(X, method="mean_sd", method_args=None)`
 
 ```
+# import numpy package
+import numpy as np
+
 # example dataset
 X = np.array([[-1, 0], [2, 1], [1, -2], [1, 1]])
 
@@ -68,6 +74,9 @@ array([[ 1.41421356, -1.35873244, -0.53916387],
 - `na.na_counter(X)`
 
 ```
+# import numpy package
+import numpy as np
+
 # example dataset
 X = np.array([[-1, np.nan], [np.nan, np.nan], [1, np.nan], [1, 1]])
 
@@ -87,21 +96,22 @@ Output:
 **Description:** consolidate scikit-learns current work flow for splitting a data set in to train and test sets, i.e. turn this:
 
 ```
+import pandas as pd
 data = pd.read_csv('data.csv')
 
 X = data.iloc[:, 0:10]
 y = data.iloc[:, 10:11]
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+X_train, X_test, y_train, y_test = sp.train_test_split(X, y, test_size=0.3)
 
 ```
 into this:
 
 ```
-
+import pandas as pd
 data = pd.read_csv('data.csv')
 
-X_train, X_test, y_train, y_test = splitter(data, target_index='y', split_size=0.3, seed=42)
+X_train, X_test, y_train, y_test = sp.splitter(data, target_index='y', split_size=0.3, seed=42)
 
 ```
 
