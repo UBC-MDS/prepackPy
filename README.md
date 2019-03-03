@@ -30,6 +30,9 @@ After the package has been installed you will be able to complete the following 
 - `sp.splitter(X, target_index, split_size, seed)`
 
 ```
+# import numpy package
+import numpy as np
+
 # example dataset
 X = np.random.randint(10, size=(3, 3))
 
@@ -51,6 +54,9 @@ y_test = array([2])
 - `sd.stdizer(X, method="mean_sd", method_args=None)`
 
 ```
+# import numpy package
+import numpy as np
+
 # example dataset
 X = np.array([[-1, 0], [2, 1], [1, -2], [1, 1]])
 
@@ -68,6 +74,9 @@ array([[ 1.41421356, -1.35873244, -0.53916387],
 - `na.na_counter(X)`
 
 ```
+# import numpy package
+import numpy as np
+
 # example dataset
 X = np.array([[-1, np.nan], [np.nan, np.nan], [1, np.nan], [1, 1]])
 
@@ -80,6 +89,7 @@ Output:
 {'column': [0, 1], 'nans': [1, 3]}
 ```
 
+
 ## Function Descriptions
 
 - `sp.splitter(X, target_index, split_size, seed)`
@@ -87,6 +97,7 @@ Output:
 **Description:** consolidate scikit-learns current work flow for splitting a data set in to train and test sets, i.e. turn this:
 
 ```
+import pandas as pd
 data = pd.read_csv('data.csv')
 
 X = data.iloc[:, 0:10]
@@ -98,7 +109,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 into this:
 
 ```
-
+import pandas as pd
 data = pd.read_csv('data.csv')
 
 X_train, X_test, y_train, y_test = splitter(data, target_index='y', split_size=0.3, seed=42)
@@ -157,3 +168,22 @@ This function also will consider two more standardization techniques including s
 The existing package/method is [`pandas.DataFrame.describe`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.describe.html) or [`pandas.DataFrame.info`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.info.html), which contains a summary of the dataset including information of missing values. However, there is no method for finding and reporting where missing values exist in Python.
 
 This function will take this problem into consideration. It will be able to return both the indices of columns that contains missing values, number of missing values.
+
+## Branch test coverage
+
+You can also create a coverage report by navigating to `tests` folder and typing the following from the Terminal:
+
+```
+pytest --cov-branch; coverage report -m
+```
+
+The following screenshot shows that the branch test coverage for each file in the prepackPy package.
+
+![](imgs/test_coverage.png)
+
+
+If you don't have `pytest` installed on your machine, you can install this package by typing the following from the Terminal: 
+
+```
+pip install pytest
+```
