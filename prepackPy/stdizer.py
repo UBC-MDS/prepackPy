@@ -61,7 +61,7 @@ def stdizer(X, method="mean_sd", method_args=None):
         raise TypeError("method must be a string type")
     if method_args:
         if not isinstance(method_args, list):
-            raise TypeError("X must be of numpy.ndarray or pandas.dataframe type")
+            raise TypeError("Method args must be of type list")
             
     # Make sure only the 5 allowed methods have been passed into the function
     if not method in ["mean_sd","mean", "sd", "min_max", "own"]:
@@ -75,6 +75,7 @@ def stdizer(X, method="mean_sd", method_args=None):
     if method == "own":
         if len(method_args) > X_stdized.shape[1]:
             raise ValueError('Too many method arguments have been entered')
+    if method == "own":
         if len({len(i) for i in method_args}) == 2:
             raise ValueError('All lists in method_args must numeric and of length 2 (a. mean, b. standard deviation)')
     
@@ -97,7 +98,7 @@ def stdizer(X, method="mean_sd", method_args=None):
             min_val = np.min(X_stdized[:,i])
             max_val = np.max(X_stdized[:,i])
             X_stdized[:,i] = (X_stdized[:,i] - min_val)/max_val
-    elif (method == "own"):
+    else:
         for i in range(0,X_stdized.shape[1]):
             mean = method_args[i][0]
             std = method_args[i][1]
