@@ -2,9 +2,9 @@
 
 import numpy as np
 import pandas as pd
+from typing import Any, Tuple
 
-
-def splitter(X, target_index, split_size, seed): 
+def splitter(X: Any, target_index: int, split_size: float, seed: int) -> Tuple[Any, Any, Any, Any]: 
     """
     split a dataset into train and test sets
 
@@ -87,8 +87,8 @@ def splitter(X, target_index, split_size, seed):
     np.random.seed(seed)
     test_index = np.random.choice(X.shape[0], int(round(X.shape[0] * split_size, 0)), replace=False)
     train_index = [x for x in row_index if x not in test_index]
-    X_train = features[train_index,:]
-    y_train = label[train_index]
-    X_test = features[test_index,:]
-    y_test = label[test_index]    
+    X_train: Any = features[train_index,:]
+    y_train: Any = label[train_index]
+    X_test: Any = features[test_index,:]
+    y_test: Any = label[test_index]    
     return X_train, y_train, X_test, y_test

@@ -2,8 +2,9 @@
 
 import numpy as np
 import pandas as pd
+from typing import Any, List
 
-def stdizer(X, method="mean_sd", method_args=None):
+def stdizer(X: Any, method: str = "mean_sd", method_args = None) -> Any:
     """
     Standardize a dataset (X) based on a specificed standardization method (method & method_args).
     
@@ -68,7 +69,7 @@ def stdizer(X, method="mean_sd", method_args=None):
         raise ValueError("Invalid input for the method argument")
 
     # Transform the dataset (X) to a numpy array
-    X_stdized = np.asarray(X)
+    X_stdized: Any = np.asarray(X)
     X_stdized = X_stdized.astype(float)
     
     # Make sure the arguments in method_args are valid

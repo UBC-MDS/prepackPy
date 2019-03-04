@@ -2,8 +2,9 @@
 
 import numpy as np
 import pandas as pd
+from typing import List, Any, Dict
 
-def na_counter(X, col_index=None):
+def na_counter(X: Any, col_index: List[int] = None) -> Dict[str, List[int]]:
     """
     This function takes in tabular data and counts missing columnwise and summarizes the
     information in a dictionary.
@@ -12,7 +13,7 @@ def na_counter(X, col_index=None):
     ----------
     X: numpy array, pandas dataframe
         an input dataset
-    col_index: int
+    col_index: List[int]
 
     Returns
     -------
@@ -54,7 +55,7 @@ def na_counter(X, col_index=None):
 
     ### function
     columns = X.shape[1]
-    na_dict = {'column':[], 'nans':[]}
+    na_dict: Dict[str, List[int]] = {'column':[], 'nans':[]}
     X_na = np.asarray(X)
 
     if isinstance(col_index, int):
@@ -81,4 +82,4 @@ def na_counter(X, col_index=None):
             na_dict['column'].append(i)
             na_dict['nans'].append(nans)
 
-    return na_dict
+    return(na_dict)
