@@ -6,4 +6,6 @@ install:
  - pip install -U pytest
  - pip install numpy
  - pip install pandas
-script: pytest
+script:
+- cd tests/
+- pytest
