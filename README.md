@@ -151,7 +151,7 @@ The input parameter `method` accepts the following values: mean_sd, mean, sd, mi
 |------------------|------------------------|-------------------------------------------------|-------------|
 | X                | pandas.dataframe, numpy.ndarray | dictionary(key= column index, value = NA count) | dictionary  |
 
-## Relationship to the Python ecosystem
+## Relationship to the Python Ecosystem
 
 - `splitter`
 
@@ -171,9 +171,18 @@ The existing package/method is [`pandas.DataFrame.describe`](https://pandas.pyda
 
 This function will take this problem into consideration. It will be able to return both the indices of columns that contains missing values, number of missing values.
 
-## Branch test coverage
+## Function Test
 
-You can also create a coverage report by navigating to `tests` folder and typing the following from the Terminal:
+You can test our functions by navigating to `tests` folder and tying the following from the Terminal:
+
+```
+pytest
+```
+The following screenshot shows the test result of our functions.
+
+![](imgs/test_result.png)
+
+You can also create a coverage report by typing the following from the Terminal:
 
 ```
 pytest --cov-branch; coverage report -m
@@ -189,3 +198,4 @@ If you don't have `pytest` installed on your machine, you can install this packa
 ```
 pip install pytest
 ```
+
